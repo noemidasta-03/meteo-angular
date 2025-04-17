@@ -1,0 +1,30 @@
+
+
+.background-image {
+  background-image: url('https://i0.wp.com/ingvambiente.com/wp-content/uploads/2024/12/meteo-o-clima.jpg?fit=1280%2C960&ssl=1');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+}
+
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
