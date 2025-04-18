@@ -4,7 +4,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from "rxjs";
 import {coordinatesResponse} from "../models/coordinates.model";
 import {forecastResponse} from "../models/forecast.model";
-import {weatherResponse} from "../models/weather.model";
+import {WeatherResponse} from "../models/weather.model";
 
 @Injectable({
   providedIn: 'root'
@@ -26,12 +26,12 @@ export class WeatherService {
     const url = `${this.forecastApiUrl}?lat=${lat}&lon=${lon}&appid=${this.apiKey}&units=metric`;
     return this.http.get<forecastResponse>(url)
   }
-  getCurrentWeather(lat:number,lon:number):Observable<weatherResponse>{
+  getCurrentWeather(lat:number,lon:number):Observable<WeatherResponse>{
     let params = new HttpParams();
     params= params.set('lat', lat);
     params= params.set('lon', lon);
     params= params.set('appid', this.apiKey);
     params= params.set('units', 'metric');
-    return this.http.get<weatherResponse>(`${this.currentWeather}`, {params: params});
+    return this.http.get<WeatherResponse>(`${this.currentWeather}`, {params: params});
   }
 }

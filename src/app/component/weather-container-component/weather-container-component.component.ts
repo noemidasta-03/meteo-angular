@@ -5,7 +5,7 @@ import {WeatherService} from '../../service/weather.service';
 import {NgIf} from '@angular/common';
 import {coordinatesResponse} from '../../models/coordinates.model';
 import {forecastResponse} from '../../models/forecast.model';
-import {weatherResponse} from '../../models/weather.model';
+import {WeatherResponse} from '../../models/weather.model';
 import {CurrentWeatherComponent} from './current-weather/current-weather.component';
 
 
@@ -24,8 +24,8 @@ import {CurrentWeatherComponent} from './current-weather/current-weather.compone
 
 
 export class WeatherContainerComponentComponent {
-  forecastData: any;
-  currentWeatherData: any;
+  forecastData: forecastResponse | null = null;
+  currentWeatherData: WeatherResponse | null = null;
 
   constructor(private weatherService: WeatherService) {}
 
@@ -38,8 +38,9 @@ export class WeatherContainerComponentComponent {
         this.weatherService.getForecast(lat,lon).subscribe((forecast:forecastResponse)=>{
           this.forecastData = forecast;
           this.currentWeatherData= null
+          console.log(forecast);
         })
-        console.log(res)
+
       }else{
         this.handleCityNotFound()
       }
@@ -47,13 +48,14 @@ export class WeatherContainerComponentComponent {
   }
 
   onCurrentWeatherRequest(city: string) {
-    this.weatherService.getCoordinates(city).subscribe((res:any)=>{
+    this.weatherService.getCoordinates(city).subscribe((res:coordinatesResponse[] )=>{
       if(res.length > 0){
         const lat= res[0].lat;
         const lon= res[0].lon;
-        this.weatherService.getCurrentWeather(lat,lon).subscribe((weather:weatherResponse)=>{
+        this.weatherService.getCurrentWeather(lat,lon).subscribe((weather:WeatherResponse)=>{
           this.currentWeatherData = weather;
           this.forecastData = null;
+          console.log(weather);
         })
       }else{
         this.handleCityNotFound()

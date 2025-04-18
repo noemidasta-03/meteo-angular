@@ -1,4 +1,4 @@
-export interface weatherResponse{
+export interface WeatherResponse{
   base:string;
   clouds:{all:number};
   cod:number;
@@ -25,10 +25,17 @@ export interface weatherResponse{
   }
   timezone:number,
   visibility:number,
-  weather:[],
+  weather:WeatherEntry[],
   wind:{
     deg:number,
     gust:number,
     speed:number,
   }
+}
+
+export interface WeatherEntry{
+  description:string;
+  icon:string;
+  id:number;
+  main:string;
 }
