@@ -5,12 +5,12 @@
     <thead>
     <tr>
       <th>Temperatura</th>
+      <th>Nuvoloso</th>
       <th>Temp Min</th>
       <th>Temp Max</th>
       <th>Pressione</th>
       <th>Umidità</th>
       <th>Livello Mare</th>
-      <th>Nuvoloso</th>
       <th>Condizione</th>
       <th>Icona</th>
     </tr>
@@ -50,10 +50,7 @@
         <td> {{currentWeather.wind.speed}}m/s</td>
         <td> {{currentWeather.wind.deg}}°</td>
         <td>
-          <img
-            [src]="'https://openweathermap.org/img/wn/' + currentWeather.weather[0].icon + '@2x.png'"
-            [alt]="currentWeather.weather[0].description"
-          />
+          <i class="bi bi-wind" style="font-size: 2rem; color: #4CAF50" ></i>
         </td>
       </tr>
     </tbody>

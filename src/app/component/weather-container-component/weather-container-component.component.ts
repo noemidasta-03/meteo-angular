@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import {CitySearchComponentComponent} from './city-search-component/city-search-component.component';
 import {ForeCastComponentComponent} from './fore-cast-component/fore-cast-component.component';
 import {WeatherService} from '../../service/weather.service';
-import {CurrentWeatherComponent} from './current-weather/current-weather.component';
 import {NgIf} from '@angular/common';
 import {coordinatesResponse} from '../../models/coordinates.model';
 import {forecastResponse} from '../../models/forecast.model';
 import {weatherResponse} from '../../models/weather.model';
+import {CurrentWeatherComponent} from './current-weather/current-weather.component';
 
 
 @Component({
