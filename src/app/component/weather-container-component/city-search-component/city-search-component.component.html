@@ -3,7 +3,8 @@
 <div class="city-search-container">
   <h1>Meteo</h1>
   <div class="search-row">
-    <input [(ngModel)]="city" placeholder="inserisci una città" />
-    <button (click)="search()">Cerca</button>
+    <input [(ngModel)]="city" placeholder="Inserisci una città" />
+    <button (click)="search('forecast')">Previsioni 5 giorni</button>
+    <button (click)="search('current')">Meteo attuale</button>
   </div>
 </div>

@@ -1,4 +1,5 @@
 
-<app-city-search-component (citySelected)="onCitySelected($event)"></app-city-search-component>
-<app-fore-cast-component [forecast]="forecastData" ></app-fore-cast-component>
+<app-city-search-component (forecastRequested)="onForecastRequest($event)" (currentWeatherRequested)="onCurrentWeatherRequest($event)"></app-city-search-component>
+<app-fore-cast-component *ngIf='forecastData' [forecast]="forecastData" ></app-fore-cast-component>
+<app-current-weather *ngIf='currentWeatherData' [currentWeather]="currentWeatherData" ></app-current-weather>
 

@@ -1,0 +1,61 @@
+<div *ngIf="currentWeather">
+  <h3>Meteo attuale per {{ currentWeather.name }}</h3>
+
+  <table class="forecast-table">
+    <thead>
+    <tr>
+      <th>Temperatura</th>
+      <th>Temp Min</th>
+      <th>Temp Max</th>
+      <th>Pressione</th>
+      <th>Umidità</th>
+      <th>Livello Mare</th>
+      <th>Nuvoloso</th>
+      <th>Condizione</th>
+      <th>Icona</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{ currentWeather.main.temp }}°C</td>
+      <td>{{currentWeather.clouds.all}}%</td>
+      <td>{{currentWeather.main.temp_min}}°C</td>
+      <td>{{currentWeather.main.temp_max}}°C</td>
+      <td>{{currentWeather.main.pressure}}hPa</td>
+      <td>{{currentWeather.main.humidity}}%</td>
+      <td>{{currentWeather.main.sea_level}}hPa</td>
+      <td>{{ currentWeather.weather[0].description }}</td>
+
+      <td>
+        <img
+          [src]="'https://openweathermap.org/img/wn/' + currentWeather.weather[0].icon + '@2x.png'"
+          [alt]="currentWeather.weather[0].description"
+        />
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div *ngIf="currentWeather">
+  <h3>Vento</h3>
+  <table class="forecast-table">
+    <thead>
+      <th>Velocità</th>
+      <th>Gradi</th>
+      <th>Icona</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td> {{currentWeather.wind.speed}}m/s</td>
+        <td> {{currentWeather.wind.deg}}°</td>
+        <td>
+          <img
+            [src]="'https://openweathermap.org/img/wn/' + currentWeather.weather[0].icon + '@2x.png'"
+            [alt]="currentWeather.weather[0].description"
+          />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

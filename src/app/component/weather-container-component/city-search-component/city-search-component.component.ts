@@ -12,11 +12,14 @@ import {FormsModule} from '@angular/forms';
 export class CitySearchComponentComponent {
   city:string= '';
 
-  @Output() citySelected= new EventEmitter<string>();
+  @Output() forecastRequested= new EventEmitter<string>();
+  @Output() currentWeatherRequested= new EventEmitter<string>();
 
-  search(){
-    if(this.city){
-      this.citySelected.emit(this.city)
+  search(type: 'forecast'| 'current'){
+    if(type === 'forecast'){
+      this.forecastRequested.emit(this.city)
+    }else{
+      this.currentWeatherRequested.emit(this.city)
     }
   }
 }
