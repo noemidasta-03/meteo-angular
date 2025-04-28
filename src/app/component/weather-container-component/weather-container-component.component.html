@@ -2,4 +2,5 @@
 <app-city-search-component (forecastRequested)="onForecastRequest($event)" (currentWeatherRequested)="onCurrentWeatherRequest($event)"></app-city-search-component>
 <app-fore-cast-component *ngIf='forecastData' [forecast]="forecastData" ></app-fore-cast-component>
 <app-current-weather *ngIf='currentWeatherData' [currentWeather]="currentWeatherData" ></app-current-weather>
+<app-toast *ngIf="message" [message]="message" ></app-toast>
 

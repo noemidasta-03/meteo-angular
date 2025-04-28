@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CitySearchComponentComponent} from './city-search-component/city-search-component.component';
 import {ForeCastComponentComponent} from './fore-cast-component/fore-cast-component.component';
 import {WeatherService} from '../../service/weather.service';
@@ -7,6 +7,8 @@ import {coordinatesResponse} from '../../models/coordinates.model';
 import {forecastResponse} from '../../models/forecast.model';
 import {WeatherResponse} from '../../models/weather.model';
 import {CurrentWeatherComponent} from './current-weather/current-weather.component';
+import {ToastService} from '../../service/toast.service';
+import {ToastComponent} from '../toast/toast.component';
 
 
 @Component({
@@ -16,6 +18,7 @@ import {CurrentWeatherComponent} from './current-weather/current-weather.compone
     ForeCastComponentComponent,
     CurrentWeatherComponent,
     NgIf,
+    ToastComponent,
 
   ],
   templateUrl: './weather-container-component.component.html',
@@ -23,11 +26,12 @@ import {CurrentWeatherComponent} from './current-weather/current-weather.compone
 })
 
 
-export class WeatherContainerComponentComponent {
+export class WeatherContainerComponentComponent{
   forecastData: forecastResponse | null = null;
   currentWeatherData: WeatherResponse | null = null;
+  message:string = '';
 
-  constructor(private weatherService: WeatherService) {}
+  constructor(private weatherService: WeatherService,private toastService: ToastService) {}
 
   onForecastRequest(city: string) {
     this.weatherService.getCoordinates(city).subscribe((res:coordinatesResponse[])=>{
@@ -62,10 +66,11 @@ export class WeatherContainerComponentComponent {
       }
     })
   }
-
   handleCityNotFound(){
     this.forecastData = null;
     this.currentWeatherData = null;
-    alert('citta non trovata')
+    this.toastService.getToast('città non trovata').subscribe(message => {
+      this.message = message;
+    });
   }
 }
